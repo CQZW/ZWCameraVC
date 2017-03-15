@@ -1,0 +1,394 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		16D8C3F71E7925B50002071E /* ZWCameraVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 16D8C3F61E7925B50002071E /* ZWCameraVC.m */; };
+		16D8C3F91E7925E60002071E /* GPUImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16D8C3F81E7925E60002071E /* GPUImage.framework */; };
+		16D8C3FC1E7927490002071E /* GPUImageBeautifyFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 16D8C3FB1E7927490002071E /* GPUImageBeautifyFilter.m */; };
+		16D8C3FE1E792DF10002071E /* ZWCameraVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16D8C3FD1E792DF10002071E /* ZWCameraVC.xib */; };
+		16D8C40A1E793F4A0002071E /* SVIndefiniteAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16D8C4011E793F4A0002071E /* SVIndefiniteAnimatedView.m */; };
+		16D8C40B1E793F4A0002071E /* SVProgressAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16D8C4031E793F4A0002071E /* SVProgressAnimatedView.m */; };
+		16D8C40C1E793F4A0002071E /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 16D8C4051E793F4A0002071E /* SVProgressHUD.bundle */; };
+		16D8C40D1E793F4A0002071E /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 16D8C4071E793F4A0002071E /* SVProgressHUD.m */; };
+		16D8C40E1E793F4A0002071E /* SVRadialGradientLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 16D8C4091E793F4A0002071E /* SVRadialGradientLayer.m */; };
+		16E470431E7924BB004C1AC1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E470421E7924BB004C1AC1 /* main.m */; };
+		16E470461E7924BB004C1AC1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E470451E7924BB004C1AC1 /* AppDelegate.m */; };
+		16E470491E7924BB004C1AC1 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E470481E7924BB004C1AC1 /* ViewController.m */; };
+		16E4704C1E7924BB004C1AC1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 16E4704A1E7924BB004C1AC1 /* Main.storyboard */; };
+		16E4704E1E7924BB004C1AC1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 16E4704D1E7924BB004C1AC1 /* Assets.xcassets */; };
+		16E470511E7924BB004C1AC1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 16E4704F1E7924BB004C1AC1 /* LaunchScreen.storyboard */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		16D8C3F51E7925B50002071E /* ZWCameraVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZWCameraVC.h; sourceTree = "<group>"; };
+		16D8C3F61E7925B50002071E /* ZWCameraVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZWCameraVC.m; sourceTree = "<group>"; };
+		16D8C3F81E7925E60002071E /* GPUImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GPUImage.framework; sourceTree = "<group>"; };
+		16D8C3FA1E7927490002071E /* GPUImageBeautifyFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPUImageBeautifyFilter.h; sourceTree = "<group>"; };
+		16D8C3FB1E7927490002071E /* GPUImageBeautifyFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPUImageBeautifyFilter.m; sourceTree = "<group>"; };
+		16D8C3FD1E792DF10002071E /* ZWCameraVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZWCameraVC.xib; sourceTree = "<group>"; };
+		16D8C4001E793F4A0002071E /* SVIndefiniteAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVIndefiniteAnimatedView.h; sourceTree = "<group>"; };
+		16D8C4011E793F4A0002071E /* SVIndefiniteAnimatedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVIndefiniteAnimatedView.m; sourceTree = "<group>"; };
+		16D8C4021E793F4A0002071E /* SVProgressAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressAnimatedView.h; sourceTree = "<group>"; };
+		16D8C4031E793F4A0002071E /* SVProgressAnimatedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressAnimatedView.m; sourceTree = "<group>"; };
+		16D8C4041E793F4A0002071E /* SVProgressHUD-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SVProgressHUD-Prefix.pch"; sourceTree = "<group>"; };
+		16D8C4051E793F4A0002071E /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
+		16D8C4061E793F4A0002071E /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
+		16D8C4071E793F4A0002071E /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
+		16D8C4081E793F4A0002071E /* SVRadialGradientLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVRadialGradientLayer.h; sourceTree = "<group>"; };
+		16D8C4091E793F4A0002071E /* SVRadialGradientLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVRadialGradientLayer.m; sourceTree = "<group>"; };
+		16E4703E1E7924BB004C1AC1 /* ZWCameraVC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZWCameraVC.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		16E470421E7924BB004C1AC1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		16E470441E7924BB004C1AC1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		16E470451E7924BB004C1AC1 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		16E470471E7924BB004C1AC1 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		16E470481E7924BB004C1AC1 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		16E4704B1E7924BB004C1AC1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		16E4704D1E7924BB004C1AC1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		16E470501E7924BB004C1AC1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		16E470521E7924BB004C1AC1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		16E4703B1E7924BB004C1AC1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				16D8C3F91E7925E60002071E /* GPUImage.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		16D8C3F41E7925930002071E /* ZWCameraVC */ = {
+			isa = PBXGroup;
+			children = (
+				16D8C3FA1E7927490002071E /* GPUImageBeautifyFilter.h */,
+				16D8C3FB1E7927490002071E /* GPUImageBeautifyFilter.m */,
+				16D8C3F51E7925B50002071E /* ZWCameraVC.h */,
+				16D8C3F61E7925B50002071E /* ZWCameraVC.m */,
+				16D8C3FD1E792DF10002071E /* ZWCameraVC.xib */,
+			);
+			path = ZWCameraVC;
+			sourceTree = "<group>";
+		};
+		16D8C3FF1E793F4A0002071E /* SVProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				16D8C4001E793F4A0002071E /* SVIndefiniteAnimatedView.h */,
+				16D8C4011E793F4A0002071E /* SVIndefiniteAnimatedView.m */,
+				16D8C4021E793F4A0002071E /* SVProgressAnimatedView.h */,
+				16D8C4031E793F4A0002071E /* SVProgressAnimatedView.m */,
+				16D8C4041E793F4A0002071E /* SVProgressHUD-Prefix.pch */,
+				16D8C4051E793F4A0002071E /* SVProgressHUD.bundle */,
+				16D8C4061E793F4A0002071E /* SVProgressHUD.h */,
+				16D8C4071E793F4A0002071E /* SVProgressHUD.m */,
+				16D8C4081E793F4A0002071E /* SVRadialGradientLayer.h */,
+				16D8C4091E793F4A0002071E /* SVRadialGradientLayer.m */,
+			);
+			path = SVProgressHUD;
+			sourceTree = "<group>";
+		};
+		16E470351E7924BB004C1AC1 = {
+			isa = PBXGroup;
+			children = (
+				16E470401E7924BB004C1AC1 /* ZWCameraVC */,
+				16E4703F1E7924BB004C1AC1 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		16E4703F1E7924BB004C1AC1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				16E4703E1E7924BB004C1AC1 /* ZWCameraVC.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		16E470401E7924BB004C1AC1 /* ZWCameraVC */ = {
+			isa = PBXGroup;
+			children = (
+				16D8C3F81E7925E60002071E /* GPUImage.framework */,
+				16D8C3F41E7925930002071E /* ZWCameraVC */,
+				16E470441E7924BB004C1AC1 /* AppDelegate.h */,
+				16E470451E7924BB004C1AC1 /* AppDelegate.m */,
+				16E470471E7924BB004C1AC1 /* ViewController.h */,
+				16E470481E7924BB004C1AC1 /* ViewController.m */,
+				16E4704A1E7924BB004C1AC1 /* Main.storyboard */,
+				16E4704D1E7924BB004C1AC1 /* Assets.xcassets */,
+				16E4704F1E7924BB004C1AC1 /* LaunchScreen.storyboard */,
+				16E470521E7924BB004C1AC1 /* Info.plist */,
+				16E470411E7924BB004C1AC1 /* Supporting Files */,
+			);
+			path = ZWCameraVC;
+			sourceTree = "<group>";
+		};
+		16E470411E7924BB004C1AC1 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				16D8C3FF1E793F4A0002071E /* SVProgressHUD */,
+				16E470421E7924BB004C1AC1 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		16E4703D1E7924BB004C1AC1 /* ZWCameraVC */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 16E470551E7924BB004C1AC1 /* Build configuration list for PBXNativeTarget "ZWCameraVC" */;
+			buildPhases = (
+				16E4703A1E7924BB004C1AC1 /* Sources */,
+				16E4703B1E7924BB004C1AC1 /* Frameworks */,
+				16E4703C1E7924BB004C1AC1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ZWCameraVC;
+			productName = ZWCameraVC;
+			productReference = 16E4703E1E7924BB004C1AC1 /* ZWCameraVC.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		16E470361E7924BB004C1AC1 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = zzl;
+				TargetAttributes = {
+					16E4703D1E7924BB004C1AC1 = {
+						CreatedOnToolsVersion = 8.2;
+						DevelopmentTeam = UJ5G9Q5CCD;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 16E470391E7924BB004C1AC1 /* Build configuration list for PBXProject "ZWCameraVC" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 16E470351E7924BB004C1AC1;
+			productRefGroup = 16E4703F1E7924BB004C1AC1 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				16E4703D1E7924BB004C1AC1 /* ZWCameraVC */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		16E4703C1E7924BB004C1AC1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				16D8C40C1E793F4A0002071E /* SVProgressHUD.bundle in Resources */,
+				16E470511E7924BB004C1AC1 /* LaunchScreen.storyboard in Resources */,
+				16E4704E1E7924BB004C1AC1 /* Assets.xcassets in Resources */,
+				16D8C3FE1E792DF10002071E /* ZWCameraVC.xib in Resources */,
+				16E4704C1E7924BB004C1AC1 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		16E4703A1E7924BB004C1AC1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				16E470491E7924BB004C1AC1 /* ViewController.m in Sources */,
+				16D8C40E1E793F4A0002071E /* SVRadialGradientLayer.m in Sources */,
+				16D8C40D1E793F4A0002071E /* SVProgressHUD.m in Sources */,
+				16D8C3FC1E7927490002071E /* GPUImageBeautifyFilter.m in Sources */,
+				16E470461E7924BB004C1AC1 /* AppDelegate.m in Sources */,
+				16D8C40B1E793F4A0002071E /* SVProgressAnimatedView.m in Sources */,
+				16D8C3F71E7925B50002071E /* ZWCameraVC.m in Sources */,
+				16E470431E7924BB004C1AC1 /* main.m in Sources */,
+				16D8C40A1E793F4A0002071E /* SVIndefiniteAnimatedView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		16E4704A1E7924BB004C1AC1 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				16E4704B1E7924BB004C1AC1 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		16E4704F1E7924BB004C1AC1 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				16E470501E7924BB004C1AC1 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		16E470531E7924BB004C1AC1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		16E470541E7924BB004C1AC1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		16E470561E7924BB004C1AC1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = UJ5G9Q5CCD;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/ZWCameraVC",
+				);
+				INFOPLIST_FILE = ZWCameraVC/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = zzl.ZWCameraVC;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		16E470571E7924BB004C1AC1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = UJ5G9Q5CCD;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/ZWCameraVC",
+				);
+				INFOPLIST_FILE = ZWCameraVC/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = zzl.ZWCameraVC;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		16E470391E7924BB004C1AC1 /* Build configuration list for PBXProject "ZWCameraVC" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				16E470531E7924BB004C1AC1 /* Debug */,
+				16E470541E7924BB004C1AC1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		16E470551E7924BB004C1AC1 /* Build configuration list for PBXNativeTarget "ZWCameraVC" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				16E470561E7924BB004C1AC1 /* Debug */,
+				16E470571E7924BB004C1AC1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 16E470361E7924BB004C1AC1 /* Project object */;
+}
