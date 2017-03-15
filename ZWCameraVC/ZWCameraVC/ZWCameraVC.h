@@ -23,5 +23,7 @@
 
 
 @property (nonatomic,strong)    void(^mitblock)(UIImage* takedImage,NSString* err);
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *msliderconst;
 
+@property (weak, nonatomic) IBOutlet UISlider *mslider;
 @end

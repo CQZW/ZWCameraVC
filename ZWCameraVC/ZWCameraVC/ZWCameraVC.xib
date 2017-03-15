@@ -16,6 +16,8 @@
                 <outlet property="mlightbt" destination="Ysc-Rj-c7Q" id="5E8-Cw-SJ8"/>
                 <outlet property="mlightwaper" destination="Rq7-g8-y4a" id="uFZ-ed-vr7"/>
                 <outlet property="mmmm" destination="yro-ed-n4M" id="JwT-bj-EsL"/>
+                <outlet property="mslider" destination="9bY-0J-qun" id="Vqt-5F-Yjr"/>
+                <outlet property="msliderconst" destination="fLT-RP-Ure" id="owe-WT-l3V"/>
                 <outlet property="view" destination="iN0-l3-epB" id="VVK-i7-Fca"/>
             </connections>
         </placeholder>
@@ -27,7 +29,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xNN-OH-NLU">
                     <rect key="frame" x="0.0" y="20" width="375" height="40"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ysc-Rj-c7Q">
+                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ysc-Rj-c7Q">
                             <rect key="frame" x="8" y="0.0" width="50" height="40"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="50" id="1dL-Ye-YH8"/>
@@ -161,7 +163,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C5E-yj-JEw">
-                            <rect key="frame" x="317" y="0.0" width="50" height="100"/>
+                            <rect key="frame" x="317" y="30" width="50" height="70"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="50" id="2h2-tY-RpB"/>
                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="GIl-y3-Qgh"/>
@@ -174,14 +176,26 @@
                                 <action selector="beautifyclicked:" destination="-1" eventType="touchUpInside" id="6Nf-Tu-E6x"/>
                             </connections>
                         </button>
+                        <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="9bY-0J-qun">
+                            <rect key="frame" x="265" y="0.0" width="104" height="31"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="100" id="VQy-sx-Xlw"/>
+                                <constraint firstAttribute="height" constant="30" id="fLT-RP-Ure"/>
+                            </constraints>
+                            <connections>
+                                <action selector="sliderchang:" destination="-1" eventType="valueChanged" id="q9S-cH-qhj"/>
+                            </connections>
+                        </slider>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="bottom" secondItem="XLB-7f-3Iz" secondAttribute="bottom" constant="8" id="0xp-8a-FJc"/>
+                        <constraint firstItem="9bY-0J-qun" firstAttribute="top" secondItem="Zzk-Ah-CyJ" secondAttribute="top" id="DvI-Gt-f38"/>
                         <constraint firstItem="XLB-7f-3Iz" firstAttribute="top" secondItem="yro-ed-n4M" secondAttribute="bottom" constant="8" id="GaY-jg-CgQ"/>
+                        <constraint firstAttribute="trailing" secondItem="9bY-0J-qun" secondAttribute="trailing" constant="8" id="Hrj-dK-Jil"/>
                         <constraint firstAttribute="bottom" secondItem="qXL-7I-MnI" secondAttribute="bottom" id="Jqw-R5-bxV"/>
+                        <constraint firstItem="C5E-yj-JEw" firstAttribute="top" secondItem="9bY-0J-qun" secondAttribute="bottom" id="KIg-G5-a7N"/>
                         <constraint firstAttribute="bottom" secondItem="C5E-yj-JEw" secondAttribute="bottom" id="NEt-1K-MGE"/>
-                        <constraint firstItem="C5E-yj-JEw" firstAttribute="top" secondItem="Zzk-Ah-CyJ" secondAttribute="top" id="OVA-oS-zCO"/>
                         <constraint firstItem="yro-ed-n4M" firstAttribute="centerX" secondItem="Zzk-Ah-CyJ" secondAttribute="centerX" id="Sej-4h-MpJ"/>
                         <constraint firstItem="yro-ed-n4M" firstAttribute="top" secondItem="Zzk-Ah-CyJ" secondAttribute="top" constant="5" id="XVw-tr-6XG"/>
                         <constraint firstAttribute="trailing" secondItem="C5E-yj-JEw" secondAttribute="trailing" constant="8" id="kSA-gb-Ill"/>

@@ -37,19 +37,23 @@
     
     
     NSLayoutConstraint* w = [NSLayoutConstraint constraintWithItem:self.filterView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:self.centerwaper attribute:NSLayoutAttributeWidth multiplier:1 constant:0];
+    w.priority = 999;
     
     NSLayoutConstraint* h = [NSLayoutConstraint constraintWithItem:self.filterView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:self.centerwaper attribute:NSLayoutAttributeHeight multiplier:1 constant:0];
+    h.priority = 999;
     
     NSLayoutConstraint* cx = [NSLayoutConstraint constraintWithItem:self.filterView attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.centerwaper attribute:NSLayoutAttributeCenterX multiplier:1 constant:0];
+    cx.priority = 999;
     
     NSLayoutConstraint* cy = [NSLayoutConstraint constraintWithItem:self.filterView attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self.centerwaper attribute:NSLayoutAttributeCenterY multiplier:1 constant:0];
+    cy.priority = 999;
     
     [self.centerwaper addConstraint:w];
     [self.centerwaper addConstraint:h];
     [self.centerwaper addConstraint:cx];
     [self.centerwaper addConstraint:cy];
     
-    [self.centerwaper layoutIfNeeded];
+    [self.view layoutIfNeeded];
     
     [self.videoCamera addTarget:self.filterView];
     [self.videoCamera startCameraCapture];
@@ -66,12 +70,14 @@
     [self.videoCamera addTarget:_beautifyFilter];
     [_beautifyFilter addTarget:self.filterView];
     _beautifyEnable = YES;
+    self.msliderconst.constant = 30;
 }
 -(void)disableBeautify
 {
     [self.videoCamera removeAllTargets];
     [self.videoCamera addTarget:self.filterView];
     _beautifyEnable = NO;
+    self.msliderconst.constant = 0;
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -95,8 +101,14 @@
 }
 
 - (IBAction)sublightclicked:(UIButton*)sender {
+    
+    NSError* xx = nil;
+    
+    [self.videoCamera.inputCamera lockForConfiguration:&xx];
     if( [self.videoCamera.inputCamera isFlashModeSupported:sender.tag] )
         [self.videoCamera.inputCamera setFlashMode:sender.tag];
+    [self.videoCamera.inputCamera unlockForConfiguration];
+    
     [self updateLightStatus];
 }
 
@@ -152,6 +164,13 @@
 -(void)dealloc
 {
     _beautifyFilter = nil;
+}
+
+- (IBAction)sliderchang:(id)sender {
+    
+    if( !_beautifyEnable ) return;
+    [_beautifyFilter setBrightness:self.mslider.value*2.0f saturation:1.05f];
+    
 }
 
 
