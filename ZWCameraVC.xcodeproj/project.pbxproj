@@ -10,8 +10,8 @@
 		165316801E7A2B990063D64A /* zwres.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1653167F1E7A2B990063D64A /* zwres.xcassets */; };
 		165316841E7A88E10063D64A /* ZWPreViewVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 165316821E7A88E10063D64A /* ZWPreViewVC.m */; };
 		165316851E7A88E10063D64A /* ZWPreViewVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 165316831E7A88E10063D64A /* ZWPreViewVC.xib */; };
+		165316971E7A928B0063D64A /* GPUImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 165316961E7A928B0063D64A /* GPUImage.framework */; };
 		16D8C3F71E7925B50002071E /* ZWCameraVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 16D8C3F61E7925B50002071E /* ZWCameraVC.m */; };
-		16D8C3F91E7925E60002071E /* GPUImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16D8C3F81E7925E60002071E /* GPUImage.framework */; };
 		16D8C3FC1E7927490002071E /* GPUImageBeautifyFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 16D8C3FB1E7927490002071E /* GPUImageBeautifyFilter.m */; };
 		16D8C3FE1E792DF10002071E /* ZWCameraVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16D8C3FD1E792DF10002071E /* ZWCameraVC.xib */; };
 		16D8C40A1E793F4A0002071E /* SVIndefiniteAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16D8C4011E793F4A0002071E /* SVIndefiniteAnimatedView.m */; };
@@ -32,9 +32,9 @@
 		165316811E7A88E10063D64A /* ZWPreViewVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZWPreViewVC.h; sourceTree = "<group>"; };
 		165316821E7A88E10063D64A /* ZWPreViewVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZWPreViewVC.m; sourceTree = "<group>"; };
 		165316831E7A88E10063D64A /* ZWPreViewVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZWPreViewVC.xib; sourceTree = "<group>"; };
+		165316961E7A928B0063D64A /* GPUImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GPUImage.framework; sourceTree = "<group>"; };
 		16D8C3F51E7925B50002071E /* ZWCameraVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZWCameraVC.h; sourceTree = "<group>"; };
 		16D8C3F61E7925B50002071E /* ZWCameraVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZWCameraVC.m; sourceTree = "<group>"; };
-		16D8C3F81E7925E60002071E /* GPUImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GPUImage.framework; sourceTree = "<group>"; };
 		16D8C3FA1E7927490002071E /* GPUImageBeautifyFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPUImageBeautifyFilter.h; sourceTree = "<group>"; };
 		16D8C3FB1E7927490002071E /* GPUImageBeautifyFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPUImageBeautifyFilter.m; sourceTree = "<group>"; };
 		16D8C3FD1E792DF10002071E /* ZWCameraVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZWCameraVC.xib; sourceTree = "<group>"; };
@@ -65,7 +65,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				16D8C3F91E7925E60002071E /* GPUImage.framework in Frameworks */,
+				165316971E7A928B0063D64A /* GPUImage.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -75,6 +75,7 @@
 		16D8C3F41E7925930002071E /* ZWCameraVC */ = {
 			isa = PBXGroup;
 			children = (
+				165316961E7A928B0063D64A /* GPUImage.framework */,
 				16D8C3FA1E7927490002071E /* GPUImageBeautifyFilter.h */,
 				16D8C3FB1E7927490002071E /* GPUImageBeautifyFilter.m */,
 				16D8C3F51E7925B50002071E /* ZWCameraVC.h */,
@@ -124,7 +125,6 @@
 		16E470401E7924BB004C1AC1 /* ZWCameraVC */ = {
 			isa = PBXGroup;
 			children = (
-				16D8C3F81E7925E60002071E /* GPUImage.framework */,
 				16D8C3F41E7925930002071E /* ZWCameraVC */,
 				16E470441E7924BB004C1AC1 /* AppDelegate.h */,
 				16E470451E7924BB004C1AC1 /* AppDelegate.m */,
@@ -355,6 +355,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/ZWCameraVC",
+					"$(PROJECT_DIR)/ZWCameraVC/ZWCameraVC",
 				);
 				INFOPLIST_FILE = ZWCameraVC/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -372,6 +373,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/ZWCameraVC",
+					"$(PROJECT_DIR)/ZWCameraVC/ZWCameraVC",
 				);
 				INFOPLIST_FILE = ZWCameraVC/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
