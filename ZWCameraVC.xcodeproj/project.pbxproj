@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		165316801E7A2B990063D64A /* zwres.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1653167F1E7A2B990063D64A /* zwres.xcassets */; };
 		16D8C3F71E7925B50002071E /* ZWCameraVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 16D8C3F61E7925B50002071E /* ZWCameraVC.m */; };
 		16D8C3F91E7925E60002071E /* GPUImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16D8C3F81E7925E60002071E /* GPUImage.framework */; };
 		16D8C3FC1E7927490002071E /* GPUImageBeautifyFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 16D8C3FB1E7927490002071E /* GPUImageBeautifyFilter.m */; };
@@ -25,6 +26,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1653167F1E7A2B990063D64A /* zwres.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = zwres.xcassets; sourceTree = "<group>"; };
 		16D8C3F51E7925B50002071E /* ZWCameraVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZWCameraVC.h; sourceTree = "<group>"; };
 		16D8C3F61E7925B50002071E /* ZWCameraVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZWCameraVC.m; sourceTree = "<group>"; };
 		16D8C3F81E7925E60002071E /* GPUImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GPUImage.framework; sourceTree = "<group>"; };
@@ -73,6 +75,7 @@
 				16D8C3F51E7925B50002071E /* ZWCameraVC.h */,
 				16D8C3F61E7925B50002071E /* ZWCameraVC.m */,
 				16D8C3FD1E792DF10002071E /* ZWCameraVC.xib */,
+				1653167F1E7A2B990063D64A /* zwres.xcassets */,
 			);
 			path = ZWCameraVC;
 			sourceTree = "<group>";
@@ -197,6 +200,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				16D8C40C1E793F4A0002071E /* SVProgressHUD.bundle in Resources */,
+				165316801E7A2B990063D64A /* zwres.xcassets in Resources */,
 				16E470511E7924BB004C1AC1 /* LaunchScreen.storyboard in Resources */,
 				16E4704E1E7924BB004C1AC1 /* Assets.xcassets in Resources */,
 				16D8C3FE1E792DF10002071E /* ZWCameraVC.xib in Resources */,

@@ -23,6 +23,11 @@
     BOOL    _beautifyEnable;
     
     GPUImageBeautifyFilter  *   _beautifyFilter;
+    
+    
+    float   _defaulta;
+    float   _defaultb;
+    
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -34,7 +39,11 @@
     self.filterView = [[GPUImageView alloc] initWithFrame:self.centerwaper.bounds];
     
     [self.centerwaper addSubview:self.filterView];
-    
+    [self.centerwaper bringSubviewToFront:self.mctrwaper];
+
+    [self loadcfg];
+    [self.mslider setValue:_defaulta animated:YES];
+    [self.msliderb setValue:_defaultb animated:YES];
     
     NSLayoutConstraint* w = [NSLayoutConstraint constraintWithItem:self.filterView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:self.centerwaper attribute:NSLayoutAttributeWidth multiplier:1 constant:0];
     w.priority = 999;
@@ -60,6 +69,24 @@
     
     [self enableBeautify];
     
+    [self sliderchang:nil];
+    [self slikderbclciked:nil];
+    
+}
+-(void)loadcfg
+{
+    NSUserDefaults * def = [NSUserDefaults standardUserDefaults];
+    float fa = [[def objectForKey:@"zwcamera_seta"] floatValue];
+    float fb = [[def objectForKey:@"zwcamera_setb"] floatValue];
+    _defaulta = fa == 0.0f ? 0.525 : fa;
+    _defaultb = fb == 0.0f ? 0.525 : fb;
+}
+-(void)savecfg
+{
+    NSUserDefaults * def = [NSUserDefaults standardUserDefaults];
+    [def setObject:@(self.mslider.value) forKey:@"zwcamera_seta"];
+    [def setObject:@(self.msliderb.value) forKey:@"zwcamera_setb"];
+    [def synchronize];
 }
 
 
@@ -70,14 +97,12 @@
     [self.videoCamera addTarget:_beautifyFilter];
     [_beautifyFilter addTarget:self.filterView];
     _beautifyEnable = YES;
-    self.msliderconst.constant = 30;
 }
 -(void)disableBeautify
 {
     [self.videoCamera removeAllTargets];
     [self.videoCamera addTarget:self.filterView];
     _beautifyEnable = NO;
-    self.msliderconst.constant = 0;
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -131,6 +156,7 @@
 }
 - (IBAction)cacleclicked:(id)sender {
     
+    [self.videoCamera stopCameraCapture];
     [self.navigationController popViewControllerAnimated:YES];
     
 }
@@ -145,6 +171,7 @@
 
 - (IBAction)capclciked:(id)sender {
     
+    [self savecfg];
     [self.videoCamera capturePhotoAsImageProcessedUpToFilter:_beautifyFilter withCompletionHandler:^(UIImage *processedImage, NSError *error) {
         
         if( error == nil )
@@ -169,10 +196,37 @@
 - (IBAction)sliderchang:(id)sender {
     
     if( !_beautifyEnable ) return;
-    [_beautifyFilter setBrightness:self.mslider.value*2.0f saturation:1.05f];
+    [_beautifyFilter setBrightness:self.mslider.value*2.0f saturation:self.msliderb.value*2.0f];
     
 }
 
+- (IBAction)slikderbclciked:(id)sender {
+    
+    if( !_beautifyEnable ) return;
+    [_beautifyFilter setBrightness:self.mslider.value*2.0f saturation:self.msliderb.value*2.0f];
+    
+}
+
+- (IBAction)centertaped:(id)sender {
+
+    if( _beautifyFilter )
+    {
+        self.mctrwaper.hidden = !self.mctrwaper.hidden;
+    }
+    else
+    {
+        self.mctrwaper.hidden = YES;
+    }
+}
+- (IBAction)defaultclciked:(id)sender {
+    
+    [self.mslider setValue:0.525f animated:YES];
+    [self.msliderb setValue:0.525f animated:YES];
+    [self sliderchang:nil];
+    [self slikderbclciked:nil];
+    [self savecfg];
+    
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

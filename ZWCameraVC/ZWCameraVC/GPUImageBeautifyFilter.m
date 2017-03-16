@@ -139,8 +139,21 @@ NSString *const kGPUImageBeautifyFragmentShaderString = SHADER_STRING
 }
 
 - (void)setBrightness:(CGFloat)brightness saturation:(CGFloat)saturation{
+    
+    [hsbFilter reset];
     [hsbFilter adjustBrightness:brightness];
     [hsbFilter adjustSaturation:saturation];
 }
+- (void)setBrightness:(CGFloat)brightness
+{
+    [hsbFilter reset];
+    [hsbFilter adjustBrightness:brightness];
+}
+- (void)setSaturation:(CGFloat)saturation
+{
+    [hsbFilter reset];
+    [hsbFilter adjustSaturation:saturation];
+}
+
 
 @end

@@ -31,4 +31,7 @@
  */
 - (void)setBrightness:(CGFloat)brightness saturation:(CGFloat)saturation;
 
+- (void)setBrightness:(CGFloat)brightness;
+- (void)setSaturation:(CGFloat)saturation;
+
 @end
