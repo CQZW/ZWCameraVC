@@ -39,14 +39,14 @@
         if( self.mItBlock )
             self.mItBlock(YES);
         
-        self.mfinllock(self.mimg,nil);
-        
         NSArray* ss = self.navigationController.viewControllers;
         NSMutableArray*xx = NSMutableArray.new;
         [xx addObjectsFromArray:ss];
         [xx removeLastObject];
         [xx removeLastObject];
         [self.navigationController setViewControllers:xx animated:YES];
+        [self performSelector:@selector(gotoback) withObject:nil afterDelay:0.5f];
+
     }
     else
     {
@@ -60,7 +60,10 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
+-(void)gotoback
+{
+    self.mfinllock(self.mimg,nil);
+}
 /*
 #pragma mark - Navigation
 
