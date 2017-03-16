@@ -168,9 +168,15 @@
 - (IBAction)beautifyclicked:(id)sender {
     
     if( _beautifyEnable )
+    {
         [self disableBeautify];
+        self.mbeautifybt.alpha = 0.3f;
+    }
     else
+    {
         [self enableBeautify];
+        self.mbeautifybt.alpha = 1.0f;
+    }
     
 }
 

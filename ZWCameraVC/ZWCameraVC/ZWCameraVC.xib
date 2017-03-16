@@ -5,6 +5,7 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -151,25 +152,26 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XLB-7f-3Iz">
-                            <rect key="frame" x="162" y="29" width="50" height="63"/>
+                            <rect key="frame" x="157" y="29" width="60" height="60"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="50" id="bSj-fi-zai"/>
+                                <constraint firstAttribute="width" secondItem="XLB-7f-3Iz" secondAttribute="height" multiplier="1:1" id="cRx-fn-gKS"/>
+                                <constraint firstAttribute="width" constant="60" id="ndd-Wj-UkO"/>
                             </constraints>
-                            <state key="normal" title="拍照">
+                            <state key="normal" backgroundImage="ic_pa">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
                                 <action selector="capclciked:" destination="-1" eventType="touchUpInside" id="oGW-r8-6co"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C5E-yj-JEw">
-                            <rect key="frame" x="317" y="0.0" width="50" height="100"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C5E-yj-JEw">
+                            <rect key="frame" x="317" y="25" width="50" height="50"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="50" id="2h2-tY-RpB"/>
-                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="GIl-y3-Qgh"/>
+                                <constraint firstAttribute="width" secondItem="C5E-yj-JEw" secondAttribute="height" multiplier="1:1" id="oeD-z5-NvY"/>
                             </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <state key="normal" title="美颜">
+                            <inset key="imageEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
+                            <state key="normal" image="ic_mey">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
@@ -179,13 +181,11 @@
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="bottom" secondItem="XLB-7f-3Iz" secondAttribute="bottom" constant="8" id="0xp-8a-FJc"/>
                         <constraint firstItem="XLB-7f-3Iz" firstAttribute="top" secondItem="yro-ed-n4M" secondAttribute="bottom" constant="8" id="GaY-jg-CgQ"/>
                         <constraint firstAttribute="bottom" secondItem="qXL-7I-MnI" secondAttribute="bottom" id="Jqw-R5-bxV"/>
-                        <constraint firstAttribute="bottom" secondItem="C5E-yj-JEw" secondAttribute="bottom" id="NEt-1K-MGE"/>
                         <constraint firstItem="yro-ed-n4M" firstAttribute="centerX" secondItem="Zzk-Ah-CyJ" secondAttribute="centerX" id="Sej-4h-MpJ"/>
                         <constraint firstItem="yro-ed-n4M" firstAttribute="top" secondItem="Zzk-Ah-CyJ" secondAttribute="top" constant="5" id="XVw-tr-6XG"/>
-                        <constraint firstItem="C5E-yj-JEw" firstAttribute="top" secondItem="Zzk-Ah-CyJ" secondAttribute="top" id="g0L-md-G4F"/>
+                        <constraint firstItem="C5E-yj-JEw" firstAttribute="centerY" secondItem="Zzk-Ah-CyJ" secondAttribute="centerY" id="cap-Nq-4H2"/>
                         <constraint firstAttribute="trailing" secondItem="C5E-yj-JEw" secondAttribute="trailing" constant="8" id="kSA-gb-Ill"/>
                         <constraint firstAttribute="height" constant="100" id="klP-gF-oqR"/>
                         <constraint firstItem="qXL-7I-MnI" firstAttribute="top" secondItem="Zzk-Ah-CyJ" secondAttribute="top" id="mYi-y8-Pch"/>
@@ -290,5 +290,7 @@
     </objects>
     <resources>
         <image name="ic_camera_front" width="36" height="36"/>
+        <image name="ic_mey" width="35" height="35"/>
+        <image name="ic_pa" width="74" height="74"/>
     </resources>
 </document>
