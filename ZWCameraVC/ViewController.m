@@ -23,6 +23,10 @@
 - (IBAction)ccc:(id)sender {
     
     ZWCameraVC* vc = [[ZWCameraVC alloc]initWithNibName:@"ZWCameraVC" bundle:nil];
+    vc.mitblock = ^(UIImage* takedImage,NSString* err)
+    {
+        self.mmm.image = takedImage;
+    };
     [self.navigationController pushViewController:vc animated:YES];
     
 }

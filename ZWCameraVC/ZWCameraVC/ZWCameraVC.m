@@ -9,6 +9,7 @@
 #import "ZWCameraVC.h"
 #import "GPUImageBeautifyFilter.h"
 #import "SVProgressHUD.h"
+#import "ZWPreViewVC.h"
 @interface ZWCameraVC ()
 
 @property (nonatomic, strong) GPUImageStillCamera *videoCamera;
@@ -24,17 +25,17 @@
     
     GPUImageBeautifyFilter  *   _beautifyFilter;
     
-    
     float   _defaulta;
     float   _defaultb;
-    
+    BOOL    _caping;
 }
-- (void)viewDidLoad {
+ - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
     self.videoCamera = [[GPUImageStillCamera alloc] initWithSessionPreset:AVCaptureSessionPreset640x480 cameraPosition:AVCaptureDevicePositionFront];
-    self.videoCamera.outputImageOrientation = UIInterfaceOrientationPortrait;
+
+     self.videoCamera.outputImageOrientation = UIInterfaceOrientationPortrait;
     self.videoCamera.horizontallyMirrorFrontFacingCamera = YES;
     self.filterView = [[GPUImageView alloc] initWithFrame:self.centerwaper.bounds];
     
@@ -44,6 +45,8 @@
     [self loadcfg];
     [self.mslider setValue:_defaulta animated:YES];
     [self.msliderb setValue:_defaultb animated:YES];
+    
+    
     
     NSLayoutConstraint* w = [NSLayoutConstraint constraintWithItem:self.filterView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:self.centerwaper attribute:NSLayoutAttributeWidth multiplier:1 constant:0];
     w.priority = 999;
@@ -68,9 +71,7 @@
     [self.videoCamera startCameraCapture];
     
     [self enableBeautify];
-    
     [self sliderchang:nil];
-    [self slikderbclciked:nil];
     
 }
 -(void)loadcfg
@@ -92,6 +93,7 @@
 
 -(void)enableBeautify
 {
+    if( _beautifyEnable ) return;
     _beautifyFilter = [[GPUImageBeautifyFilter alloc] init];
     //[beautifyFilter setBrightness:1.8 saturation:1.2];
     [self.videoCamera addTarget:_beautifyFilter];
@@ -100,6 +102,7 @@
 }
 -(void)disableBeautify
 {
+    if( !_beautifyEnable ) return;
     [self.videoCamera removeAllTargets];
     [self.videoCamera addTarget:self.filterView];
     _beautifyEnable = NO;
@@ -169,22 +172,76 @@
     
 }
 
+-(void)haveTakedPic:(UIImage*)img
+{
+    ZWPreViewVC* vc = [[ZWPreViewVC alloc]initWithNibName:@"ZWPreViewVC" bundle:nil];
+    vc.mimg = img;
+    vc.mItBlock = ^(BOOL b){
+        if( b )
+        {
+            [self.videoCamera stopCameraCapture];
+        }
+        else
+        {
+            [self.videoCamera resumeCameraCapture];
+        }
+    };
+    vc.mfinllock = self.mitblock;
+    [self.navigationController pushViewController:vc animated:NO];
+}
+
+-(void)gobackWithImg:(UIImage*)img
+{
+    if( self.mitblock )
+        self.mitblock( img,nil);
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 - (IBAction)capclciked:(id)sender {
+    
+    if( _caping ) return;
+    _caping = YES;
+    
+    if( !_beautifyEnable )
+    {
+        GPUImageCropFilter* filter = [[GPUImageCropFilter alloc]initWithCropRegion:CGRectMake(0, 0, 1.0f, 1.0f)];
+        [self.videoCamera addTarget:filter];
+        [filter addTarget:self.filterView];
+        
+        [self.videoCamera capturePhotoAsImageProcessedUpToFilter:filter withCompletionHandler:^(UIImage *processedImage, NSError *error) {
+            
+            [self.videoCamera removeAllTargets];
+            [self.videoCamera addTarget:self.filterView];
+            
+            if( error == nil && processedImage != nil )
+            {
+                UIImage* img = [processedImage copy];
+                [self.videoCamera pauseCameraCapture];
+                [self haveTakedPic:img];
+            }
+            else
+            {
+                [SVProgressHUD showErrorWithStatus:[NSString stringWithFormat:@"拍照失败:%@",error.description]];
+            }
+            _caping = NO;
+        }];
+        return;
+    }
     
     [self savecfg];
     [self.videoCamera capturePhotoAsImageProcessedUpToFilter:_beautifyFilter withCompletionHandler:^(UIImage *processedImage, NSError *error) {
         
-        if( error == nil )
+        if( error == nil && processedImage != nil )
         {
             UIImage* img = [processedImage copy];
-            [self.videoCamera stopCameraCapture];
-            [self.navigationController popViewControllerAnimated:YES];
+            [self.videoCamera pauseCameraCapture];
+            [self haveTakedPic:img];
         }
         else
         {
             [SVProgressHUD showErrorWithStatus:[NSString stringWithFormat:@"拍照失败:%@",error.description]];
         }
-        
+        _caping = NO;
     }];
 }
 

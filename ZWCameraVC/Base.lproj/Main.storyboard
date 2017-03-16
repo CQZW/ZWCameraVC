@@ -5,6 +5,8 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -36,9 +38,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mqO-wx-o6V">
-                                <rect key="frame" x="116" y="295" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LXX-1O-ZkX">
+                                <rect key="frame" x="16" y="144" width="343" height="343"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="LXX-1O-ZkX" secondAttribute="height" multiplier="1:1" id="yQe-hP-CPQ"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mqO-wx-o6V">
+                                <rect key="frame" x="164.5" y="527" width="46" height="30"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
                                     <action selector="ccc:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ryd-Bj-rhB"/>
@@ -46,8 +53,18 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="mqO-wx-o6V" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="9ae-FI-ppL"/>
+                            <constraint firstItem="LXX-1O-ZkX" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="80" id="OG0-xX-q13"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="LXX-1O-ZkX" secondAttribute="trailing" id="lv0-5X-oiR"/>
+                            <constraint firstItem="LXX-1O-ZkX" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="qXj-lN-pDy"/>
+                            <constraint firstItem="mqO-wx-o6V" firstAttribute="top" secondItem="LXX-1O-ZkX" secondAttribute="bottom" constant="40" id="uud-L4-Qc8"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Rwb-AT-pif"/>
+                    <connections>
+                        <outlet property="mmm" destination="LXX-1O-ZkX" id="Tyn-Yw-5LU"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
