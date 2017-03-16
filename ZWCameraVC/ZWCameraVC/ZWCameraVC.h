@@ -28,6 +28,7 @@
 @property (weak, nonatomic) IBOutlet UISlider *mslider;
 @property (weak, nonatomic) IBOutlet UISlider *msliderb;
 
+@property (nonatomic,assign)    BOOL    mbBackCamera;//默认打开后置摄像头
 
 
 @end
