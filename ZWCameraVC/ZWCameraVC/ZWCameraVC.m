@@ -106,6 +106,8 @@
     [self.videoCamera removeAllTargets];
     [self.videoCamera addTarget:self.filterView];
     _beautifyEnable = NO;
+    self.mctrwaper.hidden = YES;
+
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -266,7 +268,7 @@
 
 - (IBAction)centertaped:(id)sender {
 
-    if( _beautifyFilter )
+    if( _beautifyEnable )
     {
         self.mctrwaper.hidden = !self.mctrwaper.hidden;
     }
