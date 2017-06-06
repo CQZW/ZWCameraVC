@@ -35,56 +35,57 @@
     GPUImageMovieWriter*    _movieweiter;
     NSURL*      _ressaveurl;
     
+    int     _funcindex;
+    
+    BOOL    _recoding;
+    NSTimer* _timer;
+    int      _counttimer;
 }
  - (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    
-    self.videoCamera = [[GPUImageStillCamera alloc] initWithSessionPreset:AVCaptureSessionPreset640x480 cameraPosition:self.mbBackCamera?AVCaptureDevicePositionBack: AVCaptureDevicePositionFront];
-
-    self.videoCamera.outputImageOrientation = UIInterfaceOrientationPortrait;
-    self.videoCamera.horizontallyMirrorFrontFacingCamera = YES;
-    self.filterView = [[GPUImageView alloc] initWithFrame:self.centerwaper.bounds];
-    
-    [self.centerwaper addSubview:self.filterView];
-     [self.centerwaper bringSubviewToFront:self.mctrwaper];
-
-     NSString* ss = [NSTemporaryDirectory() stringByAppendingPathComponent:@"zwcarmera.mp4"];
-     unlink( [ss UTF8String] );
-    _ressaveurl = [NSURL fileURLWithPath:ss];
+     [super viewDidLoad];
+     // Do any additional setup after loading the view.
      
-    [self loadcfg];
-    [self.mslider setValue:_defaulta animated:YES];
-    [self.msliderb setValue:_defaultb animated:YES];
-    
-    UILongPressGestureRecognizer* longguest = [[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(capvideo:)];
-     [self.mcatpbt addGestureRecognizer:longguest];
-    
-    NSLayoutConstraint* w = [NSLayoutConstraint constraintWithItem:self.filterView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:self.centerwaper attribute:NSLayoutAttributeWidth multiplier:1 constant:0];
-    w.priority = 999;
-    
-    NSLayoutConstraint* h = [NSLayoutConstraint constraintWithItem:self.filterView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:self.centerwaper attribute:NSLayoutAttributeHeight multiplier:1 constant:0];
-    h.priority = 999;
-    
-    NSLayoutConstraint* cx = [NSLayoutConstraint constraintWithItem:self.filterView attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.centerwaper attribute:NSLayoutAttributeCenterX multiplier:1 constant:0];
-    cx.priority = 999;
-    
-    NSLayoutConstraint* cy = [NSLayoutConstraint constraintWithItem:self.filterView attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self.centerwaper attribute:NSLayoutAttributeCenterY multiplier:1 constant:0];
-    cy.priority = 999;
-    
-    [self.centerwaper addConstraint:w];
-    [self.centerwaper addConstraint:h];
-    [self.centerwaper addConstraint:cx];
-    [self.centerwaper addConstraint:cy];
-    
-    [self.view layoutIfNeeded];
-    
-    [self.videoCamera addTarget:self.filterView];
-    [self.videoCamera startCameraCapture];
-    
-    [self enableBeautify];
-    [self sliderchang:nil];
-    
+     _funcindex = 0;
+     
+     self.videoCamera = [[GPUImageStillCamera alloc] initWithSessionPreset:AVCaptureSessionPreset640x480 cameraPosition:self.mbBackCamera?AVCaptureDevicePositionBack: AVCaptureDevicePositionFront];
+     
+     self.videoCamera.outputImageOrientation = UIInterfaceOrientationPortrait;
+     self.videoCamera.horizontallyMirrorFrontFacingCamera = YES;
+     
+     self.filterView = [[GPUImageView alloc] initWithFrame:self.centerwaper.bounds];
+     
+     [self.centerwaper addSubview:self.filterView];
+     [self.centerwaper bringSubviewToFront:self.mctrwaper];
+     
+     [self loadcfg];
+     [self.mslider setValue:_defaulta animated:YES];
+     [self.msliderb setValue:_defaultb animated:YES];
+     
+     NSLayoutConstraint* w = [NSLayoutConstraint constraintWithItem:self.filterView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:self.centerwaper attribute:NSLayoutAttributeWidth multiplier:1 constant:0];
+     w.priority = 999;
+     
+     NSLayoutConstraint* h = [NSLayoutConstraint constraintWithItem:self.filterView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:self.centerwaper attribute:NSLayoutAttributeHeight multiplier:1 constant:0];
+     h.priority = 999;
+     
+     NSLayoutConstraint* cx = [NSLayoutConstraint constraintWithItem:self.filterView attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.centerwaper attribute:NSLayoutAttributeCenterX multiplier:1 constant:0];
+     cx.priority = 999;
+     
+     NSLayoutConstraint* cy = [NSLayoutConstraint constraintWithItem:self.filterView attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self.centerwaper attribute:NSLayoutAttributeCenterY multiplier:1 constant:0];
+     cy.priority = 999;
+     
+     [self.centerwaper addConstraint:w];
+     [self.centerwaper addConstraint:h];
+     [self.centerwaper addConstraint:cx];
+     [self.centerwaper addConstraint:cy];
+     
+     [self.view layoutIfNeeded];
+     
+     [self.videoCamera addTarget:self.filterView];
+     [self.videoCamera startCameraCapture];
+     
+     [self enableBeautify];
+     [self sliderchang:nil];
+     
 }
 -(void)loadcfg
 {
@@ -174,11 +175,14 @@
 }
 - (IBAction)cacleclicked:(id)sender {
     
+    [_movieweiter finishRecording];
     [self.videoCamera stopCameraCapture];
     [self.navigationController popViewControllerAnimated:YES];
     
 }
 - (IBAction)beautifyclicked:(id)sender {
+    
+    if( _recoding ) return;
     
     if( _beautifyEnable )
     {
@@ -209,6 +213,10 @@
     vc.mmoveurl = _ressaveurl;
     vc.mfinllock = self.mitblock;
     [self.navigationController pushViewController:vc animated:NO];
+    
+    self.mtoptime.text = @"00:00";
+    [self.mrecodingprocess setProgress:1.0f];
+    
 }
 
 -(void)haveTakedPic:(UIImage*)img
@@ -236,32 +244,82 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
--(void)capvideo:(UILongPressGestureRecognizer*)sender
+-(void)recoddeal
 {
-    if( sender.state == UIGestureRecognizerStateBegan )
+    if( _recoding )
     {
-        if( _movieweiter != nil )
+        
+        [self.videoCamera pauseCameraCapture];
+        [_movieweiter finishRecording];
+        
+        self.videoCamera.audioEncodingTarget = nil;
+        
+        if( _beautifyEnable )
             [_beautifyFilter removeTarget:_movieweiter];
+        else
+        {
+            [self.videoCamera removeTarget:_movieweiter];
+        }
+        
+        [_timer invalidate];
+        
+        [self haveTakedMove];
+        
+        _recoding = NO;
+    }
+    else
+    {
+        self.mtoptime.text = @"00:00";
+        [self.mrecodingprocess setProgress:1.0f animated:YES];
+        
+        NSString* ss = [NSTemporaryDirectory() stringByAppendingPathComponent:@"zwcarmera.mp4"];
+        unlink( [ss UTF8String] );
+        _ressaveurl = [NSURL fileURLWithPath:ss];
         
         _movieweiter = [[GPUImageMovieWriter alloc]initWithMovieURL:_ressaveurl size:CGSizeMake(480, 640)];
         _movieweiter.encodingLiveVideo = YES;
         _movieweiter.shouldPassthroughAudio = YES;
         _movieweiter.hasAudioTrack = YES;
-        [_beautifyFilter addTarget:_movieweiter];
+        if( _beautifyEnable )
+            [_beautifyFilter addTarget:_movieweiter];
+        else
+        {
+            [self.videoCamera addTarget:_movieweiter];
+            [self.videoCamera addTarget:self.filterView];
+        }
+        
+        self.videoCamera.audioEncodingTarget = _movieweiter;
+        
         [_movieweiter startRecording];
         
-    }
-    else if( sender.state == UIGestureRecognizerStateEnded )
-    {
-        [self.videoCamera pauseCameraCapture];
-        [_movieweiter finishRecording];
+        _counttimer = 0;
+        _timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(timeron:) userInfo:nil repeats:YES];
+        _recoding = YES;
         
-        [self haveTakedMove];
     }
+}
+#define MAX_RECODE 120
+-(void)timeron:(id)sender
+{
+    if( _counttimer > MAX_RECODE )
+    {
+        return;
+    }
+    
+    _counttimer++;
+    self.mtoptime.text = [NSString stringWithFormat:@"%02d:%02d",_counttimer/60,_counttimer];
+    [self.mrecodingprocess setProgress:1-(float)_counttimer/MAX_RECODE animated:YES];
+    if( _counttimer == MAX_RECODE ) [self recoddeal];
+    
 }
 
 - (IBAction)capclciked:(id)sender {
     
+    if( _funcindex == 1 )
+    {//录像
+        [self recoddeal];
+        return;
+    }
     if( _caping ) return;
     _caping = YES;
     
@@ -329,6 +387,8 @@
 
 - (IBAction)centertaped:(id)sender {
 
+    if( _recoding ) return;//录制过程不能调整了
+    
     if( _beautifyEnable )
     {
         self.mctrwaper.hidden = !self.mctrwaper.hidden;
@@ -347,6 +407,50 @@
     [self savecfg];
     
 }
+- (IBAction)swiperight:(id)sender {
+
+    if( _recoding ) return;//录制过程不能切换
+    
+    [self chagneFunc:YES];
+}
+- (IBAction)swipeleft:(id)sender {
+    
+    if( _recoding ) return;//录制过程不能切换
+    
+    [self chagneFunc:NO];
+}
+-(void)chagneFunc:(BOOL)bright
+{
+    if( _funcindex == 0 && bright ) return;
+    if( _funcindex == 1 && !bright ) return;
+    _funcindex += bright?(-1):1;
+    if( _funcindex == 0 )
+    {
+        self.mtoptime.hidden = YES;
+        self.mrecodingprocess.hidden = YES;
+        self.mmmm.textColor = [UIColor colorWithRed:234/255.0f green:187/255.0f blue:0/255.0f alpha:1];
+        self.mvmmm.textColor = [UIColor whiteColor];
+        
+        [UIView animateWithDuration:0.2 animations:^{
+            self.mcenterconst.constant = 0;
+            [self.view layoutIfNeeded];
+        }];
+    }
+    else
+    {
+        self.mtoptime.hidden = NO;
+        self.mrecodingprocess.hidden = NO;
+        self.mmmm.textColor = [UIColor whiteColor];
+        self.mvmmm.textColor = [UIColor colorWithRed:234/255.0f green:187/255.0f blue:0/255.0f alpha:1];
+        
+        [UIView animateWithDuration:0.2 animations:^{
+            self.mcenterconst.constant = -34.0f;
+            [self.view layoutIfNeeded];
+        }];
+    }
+    
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

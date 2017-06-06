@@ -18,8 +18,12 @@
 @property (weak, nonatomic) IBOutlet UIView *mlightwaper;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *lightwaperconst;
+@property (weak, nonatomic) IBOutlet UILabel *mvmmm;
 
 @property (weak, nonatomic) IBOutlet UILabel *mmmm;
+@property (weak, nonatomic) IBOutlet UIProgressView *mrecodingprocess;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *mcenterconst;
+@property (weak, nonatomic) IBOutlet UILabel *mtoptime;
 
 
 @property (nonatomic,strong)    void(^mitblock)(UIImage* takedImage,NSURL* moveurl,NSString* err);

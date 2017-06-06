@@ -26,6 +26,7 @@
         self.mtagimg.image = self.mimg;
     else if( self.mmoveurl != nil )
     {
+        [self.view layoutIfNeeded];
         //2、创建播放器
         _player = [AVPlayer playerWithURL:self.mmoveurl];
         //3、创建视频显示的图层
