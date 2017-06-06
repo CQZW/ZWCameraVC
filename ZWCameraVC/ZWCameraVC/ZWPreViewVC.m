@@ -7,19 +7,35 @@
 //
 
 #import "ZWPreViewVC.h"
-
+#import <AVFoundation/AVFoundation.h>
+#import <AVKit/AVKit.h>
 @interface ZWPreViewVC ()
 
 @end
 
 @implementation ZWPreViewVC
+{
+    AVPlayer*   _player;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    self.mtagimg.image = self.mimg;
-    
+    if( self.mimg != nil )
+        self.mtagimg.image = self.mimg;
+    else if( self.mmoveurl != nil )
+    {
+        //2、创建播放器
+        _player = [AVPlayer playerWithURL:self.mmoveurl];
+        //3、创建视频显示的图层
+        AVPlayerLayer *showVodioLayer = [AVPlayerLayer playerLayerWithPlayer:_player];
+        showVodioLayer.frame = self.view.frame;
+        [self.mtagimg.layer addSublayer:showVodioLayer];
+        //4、播放视频
+        [_player play];
+
+    }
 }
 -(void)viewWillAppear:(BOOL)animated
 {
@@ -62,7 +78,7 @@
 }
 -(void)gotoback
 {
-    self.mfinllock(self.mimg,nil);
+    self.mfinllock(self.mimg,nil,nil);
 }
 /*
 #pragma mark - Navigation

@@ -13,9 +13,10 @@
 @property (weak, nonatomic) IBOutlet UIImageView *mtagimg;
 
 @property (nonatomic,strong)    UIImage*    mimg;
+@property (nonatomic,strong)    NSURL*      mmoveurl;
 
 @property (nonatomic,strong)    void(^mItBlock)(BOOL bok);
 
-@property (nonatomic,strong)    void(^mfinllock)(UIImage* takedImage,NSString* err);
+@property (nonatomic,strong)    void(^mfinllock)(UIImage* takedImage,NSURL* moveurl,NSString* err);
 
 @end

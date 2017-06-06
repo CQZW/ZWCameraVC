@@ -24,7 +24,7 @@
     
     ZWCameraVC* vc = [[ZWCameraVC alloc]initWithNibName:@"ZWCameraVC" bundle:nil];
     vc.mbBackCamera = YES;
-    vc.mitblock = ^(UIImage* takedImage,NSString* err)
+    vc.mitblock = ^(UIImage* takedImage,NSURL* moveurl, NSString* err)
     {
         self.mmm.image = takedImage;
     };

@@ -22,7 +22,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *mmmm;
 
 
-@property (nonatomic,strong)    void(^mitblock)(UIImage* takedImage,NSString* err);
+@property (nonatomic,strong)    void(^mitblock)(UIImage* takedImage,NSURL* moveurl,NSString* err);
 @property (weak, nonatomic) IBOutlet UIView *mctrwaper;
 
 @property (weak, nonatomic) IBOutlet UISlider *mslider;
@@ -30,5 +30,6 @@
 
 @property (nonatomic,assign)    BOOL    mbBackCamera;//默认打开后置摄像头
 
+@property (weak, nonatomic) IBOutlet UIButton *mcatpbt;
 
 @end

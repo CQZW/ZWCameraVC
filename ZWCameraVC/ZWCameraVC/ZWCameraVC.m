@@ -10,6 +10,9 @@
 #import "GPUImageBeautifyFilter.h"
 #import "SVProgressHUD.h"
 #import "ZWPreViewVC.h"
+
+#import <AVFoundation/AVFoundation.h>
+#import <AVKit/AVKit.h>
 @interface ZWCameraVC ()
 
 @property (nonatomic, strong) GPUImageStillCamera *videoCamera;
@@ -28,6 +31,10 @@
     float   _defaulta;
     float   _defaultb;
     BOOL    _caping;
+    
+    GPUImageMovieWriter*    _movieweiter;
+    NSURL*      _ressaveurl;
+    
 }
  - (void)viewDidLoad {
     [super viewDidLoad];
@@ -35,18 +42,23 @@
     
     self.videoCamera = [[GPUImageStillCamera alloc] initWithSessionPreset:AVCaptureSessionPreset640x480 cameraPosition:self.mbBackCamera?AVCaptureDevicePositionBack: AVCaptureDevicePositionFront];
 
-     self.videoCamera.outputImageOrientation = UIInterfaceOrientationPortrait;
+    self.videoCamera.outputImageOrientation = UIInterfaceOrientationPortrait;
     self.videoCamera.horizontallyMirrorFrontFacingCamera = YES;
     self.filterView = [[GPUImageView alloc] initWithFrame:self.centerwaper.bounds];
     
     [self.centerwaper addSubview:self.filterView];
-    [self.centerwaper bringSubviewToFront:self.mctrwaper];
+     [self.centerwaper bringSubviewToFront:self.mctrwaper];
 
+     NSString* ss = [NSTemporaryDirectory() stringByAppendingPathComponent:@"zwcarmera.mp4"];
+     unlink( [ss UTF8String] );
+    _ressaveurl = [NSURL fileURLWithPath:ss];
+     
     [self loadcfg];
     [self.mslider setValue:_defaulta animated:YES];
     [self.msliderb setValue:_defaultb animated:YES];
     
-    
+    UILongPressGestureRecognizer* longguest = [[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(capvideo:)];
+     [self.mcatpbt addGestureRecognizer:longguest];
     
     NSLayoutConstraint* w = [NSLayoutConstraint constraintWithItem:self.filterView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:self.centerwaper attribute:NSLayoutAttributeWidth multiplier:1 constant:0];
     w.priority = 999;
@@ -94,6 +106,7 @@
 -(void)enableBeautify
 {
     if( _beautifyEnable ) return;
+    [self.videoCamera removeAllTargets];
     _beautifyFilter = [[GPUImageBeautifyFilter alloc] init];
     //[beautifyFilter setBrightness:1.8 saturation:1.2];
     [self.videoCamera addTarget:_beautifyFilter];
@@ -170,14 +183,32 @@
     if( _beautifyEnable )
     {
         [self disableBeautify];
-        self.mbeautifybt.alpha = 0.3f;
+        [self.mbeautifybt setTitle:@"开启美颜" forState:UIControlStateNormal];
     }
     else
     {
         [self enableBeautify];
-        self.mbeautifybt.alpha = 1.0f;
+        [self.mbeautifybt setTitle:@"关闭美颜" forState:UIControlStateNormal];
     }
     
+}
+
+-(void)haveTakedMove
+{
+    ZWPreViewVC* vc = [[ZWPreViewVC alloc]initWithNibName:@"ZWPreViewVC" bundle:nil];
+    vc.mItBlock = ^(BOOL b){
+        if( b )
+        {
+            [self.videoCamera stopCameraCapture];
+        }
+        else
+        {
+            [self.videoCamera resumeCameraCapture];
+        }
+    };
+    vc.mmoveurl = _ressaveurl;
+    vc.mfinllock = self.mitblock;
+    [self.navigationController pushViewController:vc animated:NO];
 }
 
 -(void)haveTakedPic:(UIImage*)img
@@ -201,8 +232,32 @@
 -(void)gobackWithImg:(UIImage*)img
 {
     if( self.mitblock )
-        self.mitblock( img,nil);
+        self.mitblock( img,nil,nil);
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+-(void)capvideo:(UILongPressGestureRecognizer*)sender
+{
+    if( sender.state == UIGestureRecognizerStateBegan )
+    {
+        if( _movieweiter != nil )
+            [_beautifyFilter removeTarget:_movieweiter];
+        
+        _movieweiter = [[GPUImageMovieWriter alloc]initWithMovieURL:_ressaveurl size:CGSizeMake(480, 640)];
+        _movieweiter.encodingLiveVideo = YES;
+        _movieweiter.shouldPassthroughAudio = YES;
+        _movieweiter.hasAudioTrack = YES;
+        [_beautifyFilter addTarget:_movieweiter];
+        [_movieweiter startRecording];
+        
+    }
+    else if( sender.state == UIGestureRecognizerStateEnded )
+    {
+        [self.videoCamera pauseCameraCapture];
+        [_movieweiter finishRecording];
+        
+        [self haveTakedMove];
+    }
 }
 
 - (IBAction)capclciked:(id)sender {
