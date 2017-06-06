@@ -307,7 +307,8 @@
     }
     
     _counttimer++;
-    self.mtoptime.text = [NSString stringWithFormat:@"%02d:%02d",_counttimer/60,_counttimer];
+    int m = _counttimer/60;
+    self.mtoptime.text = [NSString stringWithFormat:@"%02d:%02d",m,_counttimer - m*60];
     [self.mrecodingprocess setProgress:1-(float)_counttimer/MAX_RECODE animated:YES];
     if( _counttimer == MAX_RECODE ) [self recoddeal];
     
