@@ -86,6 +86,16 @@
      [self enableBeautify];
      [self sliderchang:nil];
      
+     if( self.mResType == 1 )
+     {//只能有图片
+         self.mvmmm.textColor = [UIColor blackColor];
+     }
+     else if( self.mResType == 2 )
+     {//只能有视频
+         [self chagneFunc:NO];
+         self.mmmm.textColor = [UIColor blackColor];
+     }
+     
 }
 -(void)loadcfg
 {
@@ -409,13 +419,15 @@
     
 }
 - (IBAction)swiperight:(id)sender {
-
+    
+    if( self.mResType != 0 ) return;
     if( _recoding ) return;//录制过程不能切换
     
     [self chagneFunc:YES];
 }
 - (IBAction)swipeleft:(id)sender {
     
+    if( self.mResType != 0 ) return;
     if( _recoding ) return;//录制过程不能切换
     
     [self chagneFunc:NO];

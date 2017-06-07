@@ -28,6 +28,7 @@
     {
         self.mmm.image = takedImage;
     };
+    vc.mResType = 0;
     [self.navigationController pushViewController:vc animated:YES];
     
 }

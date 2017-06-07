@@ -17,6 +17,7 @@
 {
     AVPlayer*   _player;
     BOOL        _stoped;
+    AVPlayerItem* _playitem;
 }
 
 - (void)viewDidLoad {
@@ -29,10 +30,10 @@
     {
         [self.view layoutIfNeeded];
         
-        AVPlayerItem* playitem = [AVPlayerItem playerItemWithURL:self.mmoveurl];
+        _playitem = [AVPlayerItem playerItemWithURL:self.mmoveurl];
         
         //2、创建播放器
-        _player = [AVPlayer playerWithPlayerItem:playitem];
+        _player = [AVPlayer playerWithPlayerItem:_playitem];
         //3、创建视频显示的图层
         AVPlayerLayer *showVodioLayer = [AVPlayerLayer playerLayerWithPlayer:_player];
         showVodioLayer.frame = CGRectMake(0, 0, ([UIScreen mainScreen].bounds.size.width), ([UIScreen mainScreen].bounds.size.height)-55);
@@ -60,7 +61,7 @@
 {
     if( _stoped ) return;
     
-    [_player seekToTime:kCMTimeZero];
+    [_playitem seekToTime:kCMTimeZero];
     [_player play];
 }
 

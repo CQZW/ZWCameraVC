@@ -33,6 +33,7 @@
 @property (weak, nonatomic) IBOutlet UISlider *msliderb;
 
 @property (nonatomic,assign)    BOOL    mbBackCamera;//默认打开后置摄像头
+@property (nonatomic,assign)    int     mResType;//0 随便,1只能拍照,2只能视频
 
 @property (weak, nonatomic) IBOutlet UIButton *mcatpbt;
 
