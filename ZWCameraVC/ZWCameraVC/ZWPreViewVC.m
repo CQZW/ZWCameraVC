@@ -105,7 +105,7 @@
 }
 -(void)gotoback
 {
-    self.mfinllock(self.mimg,nil,nil);
+    self.mfinllock(self.mimg,self.mmoveurl,self.mmoveleng,nil);
 }
 -(void)dealloc
 {

@@ -26,7 +26,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *mtoptime;
 
 
-@property (nonatomic,strong)    void(^mitblock)(UIImage* takedImage,NSURL* moveurl,NSString* err);
+@property (nonatomic,strong)    void(^mitblock)(UIImage* takedImage,NSURL* moveurl,int moveleng,NSString* err);
 @property (weak, nonatomic) IBOutlet UIView *mctrwaper;
 
 @property (weak, nonatomic) IBOutlet UISlider *mslider;

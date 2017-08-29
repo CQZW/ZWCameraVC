@@ -14,10 +14,11 @@
 
 @property (nonatomic,strong)    UIImage*    mimg;
 @property (nonatomic,strong)    NSURL*      mmoveurl;
+@property (nonatomic,assign)    int         mmoveleng;
 
 @property (nonatomic,strong)    void(^mItBlock)(BOOL bok);
 
-@property (nonatomic,strong)    void(^mfinllock)(UIImage* takedImage,NSURL* moveurl,NSString* err);
+@property (nonatomic,strong)    void(^mfinllock)(UIImage* takedImage,NSURL* moveurl,int moveleng,NSString* err);
 @property (weak, nonatomic) IBOutlet UIButton *mokbt;
 @property (weak, nonatomic) IBOutlet UILabel *mmoveinfo;
 

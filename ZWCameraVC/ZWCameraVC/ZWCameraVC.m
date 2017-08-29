@@ -221,6 +221,7 @@
         }
     };
     vc.mmoveurl = _ressaveurl;
+    vc.mmoveleng = _counttimer;
     vc.mfinllock = self.mitblock;
     [self.navigationController pushViewController:vc animated:NO];
     
@@ -250,7 +251,7 @@
 -(void)gobackWithImg:(UIImage*)img
 {
     if( self.mitblock )
-        self.mitblock( img,nil,nil);
+        self.mitblock( img,nil,0,nil);
     [self.navigationController popViewControllerAnimated:YES];
 }
 
